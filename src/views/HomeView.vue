@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     home
-    <button @click="handleClick">打印</button>
+    <button @click="handlePrint">打印</button>
     <button @click="handlePreview">预览</button>
   </div>
 </template>
@@ -9,7 +9,16 @@
 
 <script setup>
 import { getLodop } from '@/utils/LodopFuncs'
+import { doPrint } from '@/utils/sse'
 let LODOP = null
+
+const callback = (params) => {
+  if (params.printData) {
+    console.log('print')
+    handlePrint()
+  }
+}
+doPrint(callback)
 
 const myTemplaate = () => {
   LODOP.SET_PRINT_STYLE("FontColor", 16711680)
@@ -43,7 +52,7 @@ const myTemplaate = () => {
   LODOP.SET_PRINT_STYLEA(0, "AngleOfPageInside", 180)
 }
 
-const handleClick = () => {
+const handlePrint = () => {
   LODOP = getLodop()
   LODOP.PRINT_INIT("")
   LODOP.SET_PRINT_PAGESIZE(1, 400, 800, "CreateCustomPage")
