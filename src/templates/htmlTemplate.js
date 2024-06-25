@@ -1,0 +1,3 @@
+export default function htmlTemplate(LODOP) {
+  LODOP.ADD_PRINT_HTM(10, 10, 160, 240, "<div><div>hello world</div><div>hello world</div><div>hello world</div><div>hello world</div><div>hello world</div><div>hello world</div> <img border='0' src='https://ts1.cn.mm.bing.net/th/id/R-C.c81da13ab939c8e09cdccaefe69ed753?rik=KEOvhGAsWXpVVA&riu=http%3a%2f%2fmp.weixin.iosqr.com%2fPublic%2fUploads%2fQrcode%2f5798783dd83bf.png&ehk=zrWqKAzRn3CgHy%2bkXZBWdRkV9vFU7s7vdimZk1FFpq8%3d&risl=&pid=ImgRaw&r=0' style='height: 80px;width: 80px;'/></div>")
+}

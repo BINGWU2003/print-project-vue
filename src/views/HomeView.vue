@@ -10,6 +10,9 @@
 <script setup>
 import { getLodop } from '@/utils/LodopFuncs'
 import { doPrint } from '@/utils/sse'
+import textTemplate from '@/templates/textTemplate';
+import qrTemplate from '@/templates/qrTemplate';
+import htmlTemplate from '@/templates/htmlTemplate';
 let LODOP = null
 
 const callback = (params) => {
@@ -64,7 +67,8 @@ const handlePreview = () => {
   LODOP = getLodop()
   LODOP.PRINT_INITA(0, 0, 522, 333, "打印控件功能演示_Lodop功能_自定义纸张4")
   LODOP.SET_PRINT_PAGESIZE(1, 400, 800, "CreateCustomPage")
-  myTemplaate()
+  // myTemplaate()
+  htmlTemplate(LODOP)
   LODOP.PREVIEW()
 }
 </script>
