@@ -9,21 +9,21 @@
 -->
 <template>
   <div>
-  test
-  <button @click="handleClick">button</button>
+    test
+    <button @click="handleClick">button</button>
   </div>
 </template>
 
 <script setup>
-import socketIoConnect from '@/utils/socketIo';
-const socket =  socketIoConnect()
-const handleClick = ()=>{
-  // 客户端 发消息
-  console.log('send',socket)
-  socket.emit('message', '吃饭吃饭')
+import socketIoConnect from '@/utils/socketIo'
+const { socket, clientId } = socketIoConnect()
+const handleClick = () => {
+  // 给客户端发消息
+  socket.emit('message', {
+    clientId,
+    msg: 'hello 你好'
+  })
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
