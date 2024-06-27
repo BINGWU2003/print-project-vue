@@ -3,26 +3,31 @@
     home
     <button @click="handlePrint">打印</button>
     <button @click="handlePreview">预览</button>
+    <button @click="sendMsg">发送信息</button>
   </div>
 </template>
 
 
 <script setup>
 import { getLodop } from '@/utils/LodopFuncs'
-import { doPrint } from '@/utils/sse'
-import textTemplate from '@/templates/textTemplate';
-import qrTemplate from '@/templates/qrTemplate';
-import htmlTemplate from '@/templates/htmlTemplate';
+import textTemplate from '@/templates/textTemplate'
+import qrTemplate from '@/templates/qrTemplate'
+import htmlTemplate from '@/templates/htmlTemplate'
+import websocketConnect from '@/utils/websocket'
 let LODOP = null
 
 const callback = (params) => {
-  if (params.printData) {
-    console.log('print')
-    handlePrint()
-  }
+  // if (params.printData) {
+  //   console.log('print')
+  //   handlePrint()
+  // }
+  console.log('params', params)
 }
-doPrint(callback)
 
+const ws = websocketConnect(callback)
+const sendMsg = () => {
+  ws.send('客户端发来信息:hello')
+}
 const myTemplaate = () => {
   LODOP.SET_PRINT_STYLE("FontColor", 16711680)
   LODOP.SET_PRINT_STYLEA(2, "FontName", "隶书")
@@ -71,4 +76,5 @@ const handlePreview = () => {
   htmlTemplate(LODOP)
   LODOP.PREVIEW()
 }
+console.log('abc')
 </script>
