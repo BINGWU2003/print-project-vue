@@ -196,7 +196,7 @@ app.get("/startPrint", express.json(), (req, res) => {
   if (targetClient) {
     // 且客户端在线
     if (targetClient.connected) {
-      // 收到消息后再返回给客户端
+      // 收到参数后再返回给客户端
       targetClient.socket.emit('print', {printData})
       res.send({ message: "参数已接收" })
     } else {
@@ -451,3 +451,4 @@ socket.on('register', (clientId) => {
 ![image-20240702112110454](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702112110454.png?imageSlim)
 
 此时客户端完全与服务端断开连接,只有刷新页面重启客户端才能重新连接上
+
