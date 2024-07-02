@@ -98,7 +98,7 @@ url:http://localhost:3000/getStatus
 
 请求的url:http://localhost:3000/startPrint
 
-- clientId:''xxxx"
+- clientId:''xxxx"(客户端的id)
 - printData:"xxxx"
 
 必须携带客户端的id
@@ -185,9 +185,13 @@ const socket = io('http://localhost', {
 
 绿色箭头代表客户端发送的,红色箭头代表是服务端发送的
 
+![image-20240702103521436](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702103521436.png?imageSlim)
+
 **如果客户端和服务端断开,且没有重连成功,心跳就会断开**
 
-![image-20240702103521436](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702103521436.png?imageSlim)
+心跳未触发
+
+![image-20240702115748320](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702115748320.png?imageSlim)
 
 #### 重连
 
