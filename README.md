@@ -42,7 +42,7 @@ node socketio
 
 ## 打印状态反馈
 
-使用socketio内置的心跳机制处理
+[使用socketio内置的心跳机制处理](####心跳机制)
 
 ![image-20240627171226304](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240627171226304.png?imageSlim)
 
@@ -92,9 +92,11 @@ url:http://localhost:3000/getStatus
 
 ![image-20240627182208873](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240627182208873.png?imageSlim)
 
-## 模拟用户给服务端发送数据
+## 打印交互流程
 
-url:http://localhost:3000/startPrint
+![image-20240702114637901](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702114637901.png?imageSlim)
+
+请求的url:http://localhost:3000/startPrint
 
 - clientId:''xxxx"
 - printData:"xxxx"
@@ -143,7 +145,7 @@ app.get("/startPrint", express.json(), (req, res) => {
 
 ### 客户端在线
 
-发送请求
+用户发送打印请求
 
 ![image-20240702103258287](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702103258287.png?imageSlim)
 
@@ -183,6 +185,8 @@ const socket = io('http://localhost', {
 
 绿色箭头代表客户端发送的,红色箭头代表是服务端发送的
 
+**如果客户端和服务端断开,且没有重连成功,心跳就会断开**
+
 ![image-20240702103521436](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702103521436.png?imageSlim)
 
 #### 重连
@@ -199,8 +203,6 @@ const socket = io('http://localhost:3000', {
 ```
 
 ![image-20240701174539016](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240701174539016.png?imageSlim)
-
-如果客户端断线,在配置的重连的规则里一直没有重连到服务端,那客户端和服务端将双向断开,需要重新启动客户端来连接上服务端
 
 ##### 模拟断线
 
