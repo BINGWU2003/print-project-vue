@@ -1,6 +1,6 @@
 # windows打印
 
-[前端源码](https://github.com/BINGWU2003/print-project-vue.git)
+[客户端源码](https://github.com/BINGWU2003/print-project-vue.git)
 
 [服务端源码](https://github.com/BINGWU2003/print-serve.git)
 
