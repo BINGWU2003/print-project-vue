@@ -101,9 +101,9 @@ url:http://localhost:3000/getStatus
 - clientId:''xxxx"
 - printData:"xxxx"
 
-必须携带服务端的id
+必须携带客户端的id
 
-前服务端需要提前约定好一个事件,用来处理打印
+服务端和客户端需要提前约定好一个事件,用来处理打印
 
 例子:
 
@@ -111,12 +111,12 @@ url:http://localhost:3000/getStatus
 
 ![image-20240702111245289](https://bing-wu-doc-1318477772.cos.ap-nanjing.myqcloud.com/typora/image-20240702111245289.png?imageSlim)
 
-前端代码:
+客户端代码:
 
 ```javascript
 // 客户端接收服务端发送的打印消息
 socket.on('print', (printData) => {
-// msg 就是服务端发送的消息
+// printData 就是服务端发送的消息
 console.log('在这台客户端上打印,打印数据是', printData)
 })
 ```
@@ -131,7 +131,7 @@ app.get("/startPrint", express.json(), (req, res) => {
   if (targetClient) {
     // 且客户端在线
     if (targetClient.connected) {
-      // 收到客户端的消息后再返回给客户端
+      // 收到消息后再返回给客户端
       targetClient.socket.emit('print', {printData})
       res.send({ message: "参数已接收" })
     } else {

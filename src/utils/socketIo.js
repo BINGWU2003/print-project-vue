@@ -30,7 +30,7 @@ export default function socketIoConnect() {
   })
   // 客户端接收服务端发送的打印消息
   socket.on('print', (printData) => {
-    // printData 就是后端发送的消息
+    // printData 就是服务端发送的消息
     console.log('在这台打印机上打印,打印数据是', printData)
   })
   socket.on('error', () => {
