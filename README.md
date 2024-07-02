@@ -64,6 +64,8 @@ pnpm dev
 
 浏览器访问http://localhost:5173/test
 
+每台客户端通过clientId做区分
+
 每启动一台客户端就触发register事件,在服务端注册一台客户端:
 
 客户端
