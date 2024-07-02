@@ -17,7 +17,9 @@ export default function socketIoConnect() {
     reconnection: true, // 开启断线重连
     reconnectionAttempts: 5, // 重试次数
     reconnectionDelay: 1000, // 重连间隔时间（毫秒）
-    reconnectionDelayMax: 5000 // 最大重连间隔时间（毫秒）
+    reconnectionDelayMax: 5000,// 最大重连间隔时间（毫秒）
+    pingInterval: 10000,  // 10秒发送一次ping包
+    pingTimeout: 5000    // 5秒内未响应则认为断开
   })
 
   // 连接成功触发的事件
@@ -28,7 +30,7 @@ export default function socketIoConnect() {
   })
   // 客户端接收服务端发送的打印消息
   socket.on('print', (printData) => {
-    // msg 就是后端发送的消息
+    // printData 就是后端发送的消息
     console.log('在这台打印机上打印,打印数据是', printData)
   })
   socket.on('error', () => {
