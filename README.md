@@ -198,8 +198,7 @@ app.get("/startPrint", express.json(), (req, res) => {
     if (targetClient.connected) {
       // 收到消息后再返回给客户端
       targetClient.socket.emit('print', {printData})
-      // 把打印操作消息返回给用户
-      res.send({ message: "开始打印" })
+      res.send({ message: "参数已接收" })
     } else {
       res.send({ message: "客户端离线" })
     }
@@ -209,7 +208,7 @@ app.get("/startPrint", express.json(), (req, res) => {
 })
 ```
 
-打印数据返回给客户端后,再把打印操作的提示**开始打印**反馈给用户
+把**参数已接受**反馈给用户,代表开始执行打印
 
 ### 客户端在线
 
