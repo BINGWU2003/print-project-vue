@@ -1,3 +1,12 @@
+<!--
+ * @Author: BINGWU
+ * @Date: 2024-06-24 14:21:57
+ * @LastEditors: hujiacheng hujiacheng@iipcloud.com
+ * @LastEditTime: 2024-07-17 09:24:25
+ * @FilePath: \print-project-vue\src\views\HomeView.vue
+ * @Describe: 
+ * @Mark: ૮(˶ᵔ ᵕ ᵔ˶)ა
+-->
 <template>
   <div class="home">
     home
@@ -13,7 +22,7 @@ import { getLodop } from '@/utils/LodopFuncs'
 import textTemplate from '@/templates/textTemplate'
 import qrTemplate from '@/templates/qrTemplate'
 import htmlTemplate from '@/templates/htmlTemplate'
-import websocketConnect from '@/utils/websocket'
+// import websocketConnect from '@/utils/websocket'
 let LODOP = null
 
 const callback = (params) => {
@@ -24,7 +33,7 @@ const callback = (params) => {
   console.log('params', params)
 }
 
-const ws = websocketConnect(callback)
+// const ws = websocketConnect(callback)
 const sendMsg = () => {
   ws.send('客户端发来信息:hello')
 }
@@ -70,10 +79,12 @@ const handlePrint = () => {
 
 const handlePreview = () => {
   LODOP = getLodop()
-  LODOP.PRINT_INITA(0, 0, 522, 333, "打印控件功能演示_Lodop功能_自定义纸张4")
-  LODOP.SET_PRINT_PAGESIZE(1, 400, 800, "CreateCustomPage")
+  // LODOP.PRINT_INITA(0, 0, 522, 1600, "打印控件功能演示_Lodop功能_自定义纸张4")
+  LODOP.PRINT_INIT("")
+  LODOP.SET_PRINT_PAGESIZE(1, 600, 800, "CreateCustomPage")
   // myTemplaate()
-  htmlTemplate(LODOP)
+  // htmlTemplate(LODOP)
+  LODOP.ADD_PRINT_URL(0, 0, "100%", "100%", "http://192.168.0.55/dev/test")
   LODOP.PREVIEW()
 }
 console.log('abc')

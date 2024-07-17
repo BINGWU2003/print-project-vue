@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "mqtt": "^5.8.0",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",
     "vue": "^3.4.29",
+    "vue-plugin-hiprint": "^0.0.56",
     "vue-router": "^4.3.3"
   },
   "devDependencies": {
